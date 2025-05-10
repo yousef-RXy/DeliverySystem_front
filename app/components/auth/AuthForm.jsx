@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Form,
   Link,
@@ -11,6 +12,7 @@ function AuthForm() {
   const data = useActionData();
   const navigation = useNavigation();
   const [searchParams] = useSearchParams();
+  const [role, setRole] = useState(0);
   const isSignup = searchParams.get('mode') === 'register';
   const isSubmitting = navigation.state === 'submitting';
 
@@ -66,6 +68,22 @@ function AuthForm() {
                     required
                     className="inputStyle"
                   />
+                </p>
+                <p className="mb-4">
+                  <label htmlFor="role" className="labelStyle">
+                    Role
+                  </label>
+                  <select
+                    value={role}
+                    onChange={e => setRole(e.target.value)}
+                    id="role"
+                    name="role"
+                    required
+                    className="w-full shadow border border-gray-300 h-10 px-4 py-2 rounded-lg focus:outline-none hover:ring-1 hover:bg-[#ffa91e] hover:ring-black focus:ring-1 focus:bg-[#ffa91e] focus:ring-black text-black bg-white"
+                  >
+                    <option value={0}>Merchant</option>
+                    <option value={1}>DeliveryPerson</option>
+                  </select>
                 </p>
               </>
             )}

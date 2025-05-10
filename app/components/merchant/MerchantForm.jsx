@@ -77,7 +77,7 @@ function MerchantForm() {
               required
               onChange={handleChange}
               value={formData.deliveryPersonId}
-              className="inputStyle"
+              className="w-full shadow border border-gray-300 h-10 px-4 py-2 rounded-lg focus:outline-none hover:ring-1 hover:bg-[#ffa91e] hover:ring-black focus:ring-1 focus:bg-[#ffa91e] focus:ring-black text-black bg-white"
             >
               <option value="">Select a person</option>
               {deliveryPeople.map(person => (

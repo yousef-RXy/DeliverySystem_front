@@ -23,7 +23,7 @@ export async function clientAction({ request }) {
   if (!hasMinLength(username, 3)) errorMessages.push('name is not Valid.');
   if (!hasMinLength(password, 2)) errorMessages.push('Password is Short.');
 
-  const authData = {
+  let authData = {
     username,
     password,
   };
@@ -34,6 +34,7 @@ export async function clientAction({ request }) {
       errorMessages.push(
         'The Password and the Password-confirmation is not equal.'
       );
+    authData = { ...authData, role: Number(data.get('role')) };
   }
 
   if (errorMessages.length != 0) {
